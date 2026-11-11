@@ -9,7 +9,7 @@ security:
                 users: "%admin.users%"
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_profiler(/|$)|(_wdt|css|images|js)/)
             security: false
         main:
             lazy: true
