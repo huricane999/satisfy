@@ -3,10 +3,12 @@
 /* This config requires PHP-CS-Fixer version ^2.9 */
 
 $finder = (new PhpCsFixer\Finder())
-    ->files()
-    ->name('*.php')
-    ->in(__DIR__.'/src')
-    ->in(__DIR__.'/tests')
+    ->in(__DIR__)
+    ->exclude('var')
+    ->notPath([
+        'config/bundles.php',
+        'config/reference.php',
+    ])
 ;
 
 return (new PhpCsFixer\Config('satis'))
