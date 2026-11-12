@@ -11,11 +11,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class RebuildCommand extends Command implements ContainerAwareInterface
 {
-    use ContainerAwareTrait;
+    protected ContainerInterface $container;
 
     /**
      * {@inheritdoc}
@@ -74,5 +74,10 @@ class RebuildCommand extends Command implements ContainerAwareInterface
         $application = new Application();
 
         return $application->doRun($satisInput, $output);
+    }
+
+    public function setContainer(?ContainerInterface $container = null)
+    {
+        $this->container = $container;
     }
 }

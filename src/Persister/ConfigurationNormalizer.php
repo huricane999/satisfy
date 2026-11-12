@@ -65,6 +65,16 @@ class ConfigurationNormalizer implements NormalizerInterface, DenormalizerInterf
 
         return false;
     }
+    
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            PackageConstraint::class . '[]' => true,
+            RepositoryInterface::class . '[]' => true,
+            PackageStability::class . '[]' => true,
+            Abandoned::class . '[]' => true
+        ];
+    }
 
     public function setSerializer(SerializerInterface $serializer)
     {
